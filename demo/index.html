@@ -44,154 +44,49 @@
           background-color: var(--paper-grey-100);
         };
       }
+
+      .container {
+        width: 100%;
+      }
     </style>
   </custom-style>
 </head>
 <body>
-<div class="vertical-section-container centered">
+<div class="container">
   <h3>Basic skeleton-carousel demo</h3>
-  <demo-snippet>
-    <template>
-      <skeleton-carousel dots nav>
-        <div>
-          <iron-image placeholder="https://source.unsplash.com/category/nature/10x10"
-                      data-src="https://source.unsplash.com/category/nature/400x400"
+  <!-- <demo-snippet> -->
+    <!-- <template> -->
+        <skeleton-carousel dots nav>
+          <div>
+            <iron-image placeholder="https://source.unsplash.com/category/food/10x10"
+                      data-src="https://upload.wikimedia.org/wikipedia/commons/1/16/A_size_illustration2.svg"
                       sizing="cover"
                       preload
                       fade
-          ></iron-image>
-          <h3>Title 1</h3>
-        </div>
-        <div>
-          <iron-image placeholder="https://source.unsplash.com/category/food/10x10"
-                      data-src="https://source.unsplash.com/category/food/400x400"
-                      sizing="cover"
-                      preload
-                      fade
-          ></iron-image>
-          <h3>Title 2</h3>
-        </div>
-        <div>
-          <iron-image placeholder="https://source.unsplash.com/category/buildings/10x10"
-                      data-src="https://source.unsplash.com/category/buildings/400x400"
-                      sizing="cover"
-                      preload
-                      fade
-          ></iron-image>
-          <h3>Title 3</h3>
-        </div>
-      </skeleton-carousel>
-    </template>
-  </demo-snippet>
-</div>
-<div class="vertical-section-container centered">
-  <h3>Basic skeleton-carousel demo</h3>
-  <demo-snippet>
-    <template>
-      <skeleton-carousel dots nav direction="vertical">
-        <div>
-          <iron-image placeholder="https://source.unsplash.com/category/nature/10x10"
-                      data-src="https://source.unsplash.com/category/nature/400x400"
-                      sizing="cover"
-                      preload
-                      fade
-          ></iron-image>
-          <h3>Title 1</h3>
-        </div>
-        <div>
-          <iron-image placeholder="https://source.unsplash.com/category/food/10x10"
-                      data-src="https://source.unsplash.com/category/food/400x400"
-                      sizing="cover"
-                      preload
-                      fade
-          ></iron-image>
-          <h3>Title 2</h3>
-        </div>
-        <div>
-          <iron-image placeholder="https://source.unsplash.com/category/buildings/10x10"
-                      data-src="https://source.unsplash.com/category/buildings/400x400"
-                      sizing="cover"
-                      preload
-                      fade
-          ></iron-image>
-          <h3>Title 3</h3>
-        </div>
-      </skeleton-carousel>
-    </template>
-  </demo-snippet>
-</div>
-<div class="vertical-section-container centered">
-  <h3>Basic skeleton-carousel loop demo</h3>
-  <demo-snippet>
-    <template>
-      <skeleton-carousel dots nav loop>
-        <div>
-          <iron-image placeholder="https://source.unsplash.com/category/nature/10x10"
-                      data-src="https://source.unsplash.com/category/nature/400x400"
-                      sizing="cover"
-                      preload
-                      fade
-          ></iron-image>
-          <h3>Title 1</h3>
-        </div>
-        <div>
-          <iron-image placeholder="https://source.unsplash.com/category/food/10x10"
-                      data-src="https://source.unsplash.com/category/food/400x400"
-                      sizing="cover"
-                      preload
-                      fade
-          ></iron-image>
-          <h3>Title 2</h3>
-        </div>
-        <div>
-          <iron-image placeholder="https://source.unsplash.com/category/buildings/10x10"
-                      data-src="https://source.unsplash.com/category/buildings/400x400"
-                      sizing="cover"
-                      preload
-                      fade
-          ></iron-image>
-          <h3>Title 3</h3>
-        </div>
-      </skeleton-carousel>
-    </template>
-  </demo-snippet>
-</div>
-
-<div class="vertical-section-container centered">
-  <h3>Basic skeleton-carousel autoplay demo</h3>
-  <demo-snippet>
-    <template>
-      <skeleton-carousel dots nav loop auto>
-        <div>
-          <iron-image placeholder="https://source.unsplash.com/category/nature/10x10"
-                      data-src="https://source.unsplash.com/category/nature/400x400"
-                      sizing="cover"
-                      preload
-                      fade
-          ></iron-image>
-          <h3>Title 1</h3>
-        </div>
-        <div>
-          <iron-image placeholder="https://source.unsplash.com/category/food/10x10"
-                      data-src="https://source.unsplash.com/category/food/400x400"
-                      sizing="cover"
-                      preload
-                      fade
-          ></iron-image>
-          <h3>Title 2</h3>
-        </div>
-        <div>
-          <iron-image placeholder="https://source.unsplash.com/category/buildings/10x10"
-                      data-src="https://source.unsplash.com/category/buildings/400x400"
-                      sizing="cover"
-                      preload
-                      fade
-          ></iron-image>
-          <h3>Title 3</h3>
-        </div>
-      </skeleton-carousel>
-    </template>
-  </demo-snippet>
+            ></iron-image>
+            <h3>Cover big</h3>
+          </div>
+          <div>
+            <iron-image placeholder="https://source.unsplash.com/category/food/10x10"
+                        data-src="https://upload.wikimedia.org/wikipedia/commons/1/16/A_size_illustration2.svg"
+                        sizing="contain"
+                        preload
+                        fade
+            ></iron-image>
+            <h3>Contain big</h3>
+          </div>
+          <div>
+            <iron-image placeholder="https://source.unsplash.com/category/buildings/10x10"
+                        data-src="https://vetstreet.brightspotcdn.com/dims4/default/02f0a4b/2147483647/thumbnail/645x380/quality/90/?url=https%3A%2F%2Fvetstreet-brightspot.s3.amazonaws.com%2F17%2F48bec0a34111e087a80050568d634f%2Ffile%2FSavannah-4-645mk062211.jpg"
+                        sizing="cover"
+                        preload
+                        fade
+            ></iron-image>
+            <h3>Cover small</h3>
+          </div>
+        </skeleton-carousel>
+    <!-- </template> -->
+  <!-- </demo-snippet> -->
 </div>
 </body>
 </html>
