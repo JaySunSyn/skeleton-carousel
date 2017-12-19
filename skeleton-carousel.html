@@ -47,6 +47,7 @@
         -moz-user-select: none;
         -ms-user-select: none;
         user-select: none;
+        outline: none;
         -webkit-tap-highlight-color: rgba(255, 255, 255, 0);
       }
 
@@ -338,7 +339,14 @@
             value: false,
           },
           /**
-           * Autoplay interval time in milliseconds
+           * Disable keyboard navigation
+           */
+          disableKeys: {
+            type: Boolean,
+            value: false,
+          },
+          /**
+           * Auto play interval time in milliseconds
            */
           duration: {
             type: Number,
@@ -386,6 +394,14 @@
             value: false,
             notify: true,
             readOnly: true,
+            reflectToAttribute: true,
+          },
+          /**
+           * tabindex
+           */
+          tabindex: {
+            type: Number,
+            value: 0,
             reflectToAttribute: true,
           },
           /**
@@ -438,13 +454,21 @@
             type: Object,
           },
           /**
+           * Children elements
+           */
+          _children: {
+            type: Array,
+            value: [],
+            observer: '_childrenObserver',
+          },
+          /**
            * Show navigation controls
            */
           _controls: {
             type: Boolean,
             value: false,
             readOnly: true,
-            computed: '_computeControls(dots, nav)',
+            computed: '_computeControls(dots, nav, total)',
           },
           /**
            * Returns an array with the slides.
@@ -505,13 +529,14 @@
        */
       connectedCallback() {
         super.connectedCallback();
-        this._slotChanged();
-        this.tabIndex = 0;
         const container = this.shadowRoot.querySelector('slot');
         new Polymer.FlattenedNodesObserver(container, () => {
-          this._slotChanged();
+          this._children = Polymer.FlattenedNodesObserver.getFlattenedNodes(this)
+            .filter((n) =>
+              n.nodeType === Node.ELEMENT_NODE
+              && n.nodeName !== 'DOM-REPEAT'
+              && n.nodeName !== 'TEMPLATE');
         });
-
         // Handle transition end
         const items = this.shadowRoot.querySelector('#items');
         items.addEventListener('transitionend', (e) => {
@@ -544,14 +569,15 @@
       }
 
       /**
-       * On slot change
+       * Children change observer
        *
+       * @param {array} children
        * @private
        */
-      _slotChanged() {
-        const total = this.children.length;
-        this._setTotal(total);
-        if (total >= 1) this._lazyContent(1);
+      _childrenObserver(children) {
+        this._setTotal(children.length);
+        this._lazyContent(0);
+        if (children.length >= 1) this._lazyContent(1);
       }
 
       /**
@@ -562,6 +588,7 @@
        * @return {*}
        */
       _prevKey(event) {
+        if (this.disableKeys || this.disabled) return;
         event.preventDefault();
         return this.prev();
       }
@@ -574,6 +601,7 @@
        * @return {*}
        */
       _nextKey(event) {
+        if (this.disableKeys || this.disabled) return;
         event.preventDefault();
         return this.next();
       }
@@ -642,7 +670,7 @@
        */
       _selectedObserver(newValue, oldValue) {
         this._lazyContent(newValue);
-        let selectedChild = this.children[newValue];
+        let selectedChild = this._children[newValue];
         this._setSelectedItem(selectedChild);
         if (newValue < --this.total) {
           this._lazyContent(++newValue);
@@ -660,8 +688,14 @@
        * @private
        */
       _lazyContent(selected) {
-        const child = this.children[selected];
+        const child = this._children[selected];
         if (!child) return;
+        // lazy load first level content
+        if (child.hasAttribute('data-src')) {
+          child.src = child.getAttribute('data-src');
+          child.removeAttribute('data-src');
+        }
+        // Lazy load child content
         const content = child.querySelectorAll('[data-src]');
         if (content.length <= 0) return;
         let i = 0;
@@ -771,7 +805,9 @@
       _drag(event) {
         if (this.disableSwipe || this.disabled) {
           // Reset selected to original in case is changed while dragging
-          this._setSelected(this.selected);
+          this._x = 0;
+          this._y = 0;
+          this._setSwiping(false);
           return;
         }
         const width = this.offsetWidth;
@@ -933,11 +969,12 @@
        *
        * @param {boolean} dots
        * @param {boolean} nav
+       * @param {number} total
        * @return {boolean}
        * @private
        */
-      _computeControls(dots, nav) {
-        return (dots || nav);
+      _computeControls(dots, nav, total) {
+        return total > 1 && (dots || nav);
       }
 
       /**

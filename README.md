@@ -17,15 +17,10 @@
 
 ## Installation
 
-Install skeleton-carousel with Bower
+Install `skeleton-carousel` with Bower for *Polymer 2* projects
 
-#### Polymer 2 projects
 ```shell
 $ bower install --save FabricElements/skeleton-carousel
-```
-#### Hybrid projects
-```shell
-$ bower install --save FabricElements/skeleton-carousel#^1.0.0
 ```
 
 ## Examples
@@ -56,30 +51,24 @@ $ bower install --save FabricElements/skeleton-carousel#^1.0.0
 -->
 ```html
 <skeleton-carousel dots nav loop>
-  <div>
-    <iron-image placeholder="https://source.unsplash.com/category/nature/10x10"
-                data-src="https://source.unsplash.com/category/nature/500x300"
-                sizing="cover"
-                preload
-                fade
-                ></iron-image>
-  </div>
-  <div>
-    <iron-image placeholder="https://source.unsplash.com/category/food/10x10"
-                data-src="https://source.unsplash.com/category/food/500x300"
-                sizing="cover"
-                preload
-                fade
-                ></iron-image>
-  </div>
-  <div>
-    <iron-image placeholder="https://source.unsplash.com/category/buildings/10x10"
-                data-src="https://source.unsplash.com/category/buildings/500x300"
-                sizing="cover"
-                preload
-                fade
-                ></iron-image>
-  </div>
+  <iron-image placeholder="https://source.unsplash.com/category/nature/10x10"
+              data-src="https://source.unsplash.com/category/nature/500x300"
+              sizing="cover"
+              preload
+              fade
+              ></iron-image>
+  <iron-image placeholder="https://source.unsplash.com/category/food/10x10"
+              data-src="https://source.unsplash.com/category/food/500x300"
+              sizing="cover"
+              preload
+              fade
+              ></iron-image>
+  <iron-image placeholder="https://source.unsplash.com/category/buildings/10x10"
+              data-src="https://source.unsplash.com/category/buildings/500x300"
+              sizing="cover"
+              preload
+              fade
+              ></iron-image>
 </skeleton-carousel>
 ```
 
@@ -110,30 +99,24 @@ $ bower install --save FabricElements/skeleton-carousel#^1.0.0
 -->
 ```html
 <skeleton-carousel dots nav loop direction="vertical" auto>
-  <div>
-    <iron-image placeholder="https://source.unsplash.com/category/nature/10x10"
-                data-src="https://source.unsplash.com/category/nature/500x300"
-                sizing="cover"
-                preload
-                fade
-                ></iron-image>
-  </div>
-  <div>
-    <iron-image placeholder="https://source.unsplash.com/category/food/10x10"
-                data-src="https://source.unsplash.com/category/food/500x300"
-                sizing="cover"
-                preload
-                fade
-                ></iron-image>
-  </div>
-  <div>
-    <iron-image placeholder="https://source.unsplash.com/category/buildings/10x10"
-                data-src="https://source.unsplash.com/category/buildings/500x300"
-                sizing="cover"
-                preload
-                fade
-                ></iron-image>
-  </div>
+  <iron-image placeholder="https://source.unsplash.com/category/nature/10x10"
+              data-src="https://source.unsplash.com/category/nature/500x300"
+              sizing="cover"
+              preload
+              fade
+              ></iron-image>
+  <iron-image placeholder="https://source.unsplash.com/category/food/10x10"
+              data-src="https://source.unsplash.com/category/food/500x300"
+              sizing="cover"
+              preload
+              fade
+              ></iron-image>
+  <iron-image placeholder="https://source.unsplash.com/category/buildings/10x10"
+              data-src="https://source.unsplash.com/category/buildings/500x300"
+              sizing="cover"
+              preload
+              fade
+              ></iron-image>
 </skeleton-carousel>
 ```
 
@@ -145,6 +128,7 @@ $ bower install --save FabricElements/skeleton-carousel#^1.0.0
 * `direction` (string) - Carousel direction (horizontal or vertical).
 * `disabled` (boolean) - Disables component.
 * `disable-swipe` (boolean) - Disables swipe functionality.
+* `disable-keys` (boolean) - Disables keyboard navigation.
 * `duration` (number) - Autoplay interval time in milliseconds (Default: `4000`)
 * `dots` (boolean) - Show navigation dots.
 * `end` (boolean) - Detail returns `true` when the carousel has reached the last slide.
